@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Login-Page</h1>
+        <p>{{if eq .AccessLevel 0}}Acces Denied {{else}} Acces Allowed {{end}}</p>
+        <form>
+            <label>Username:  </label><input name="username" type="text"/>
+            <label>Password: </label><input name="password" type="password"/>
+            <input value="submit" type="submit"/> 
+        </form> 
+    </body>
+    
+</html>
