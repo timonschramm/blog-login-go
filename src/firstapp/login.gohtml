@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Login-Page</h1>
+        <!--https://stackoverflow.com/questions/31101729/compare-strings-in-templates-->
+        <!-- Problem bei action - exakte domain nur ein slash hatte gefehlt! -->
+        <p>{{if eq .AccessLevel 0}}Acces Denied {{else}} Acces Allowed {{end}}</p>
+        <form action="/loginauth/" method="post">
+            <label>Username:  </label><input name="username" id="uname" type="text"/><br>
+            <label>Password: </label><input name="password" id="pword" type="password"/><br>
+            <input value="submit" type="submit"/> 
+        </form> 
+    </body>
+    
+</html>

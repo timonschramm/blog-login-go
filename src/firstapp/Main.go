@@ -20,10 +20,12 @@ type User struct {
 	AccessLevel int
 }
 
+var mert User = User{Username: "mertayg", Password: "seinpasswort", AccessLevel: 1}
+
 func loginHandler(w http.ResponseWriter, r *http.Request) {
-	timon := User{Username: "timonsrm", Password: "meinpasswort", AccessLevel: 1}
-	t := template.Must(template.ParseFiles("login.html.tmpl"))
-	t.Execute(w, timon)
+	//timon := User{Username: "timonsrm", Password: "meinpasswort", AccessLevel: 1}
+	t := template.Must(template.ParseFiles("login.gohtml"))
+	t.Execute(w, mert)
 }
 
 func newsAggHandler(w http.ResponseWriter, r *http.Request) {
@@ -38,9 +40,26 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<h1> Hello World </h1>")
 }
 
+func authHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "Post" {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+	uname := r.FormValue("username")
+	upw := r.FormValue("password")
+	fmt.Fprintf(w, "<p>Das ist der angegebene Username "+uname+" und das angegebene Passwort ist "+upw+"</p>")
+	if upw == mert.Password {
+		fmt.Fprintf(w, "<p>das passwort ist korrekt</p>")
+	} else {
+		fmt.Fprintf(w, "<p>das passwort ist falsch</p>")
+	}
+
+}
+
 func main() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/agg/", newsAggHandler)
 	http.HandleFunc("/login/", loginHandler)
+	http.HandleFunc("/loginauth/", authHandler)
 	http.ListenAndServe(":80", nil)
 }
