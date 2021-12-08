@@ -53,13 +53,25 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		fmt.Fprintf(w, "<p>das passwort ist falsch</p>")
 	}
+}
+func feedHandler(w http.ResponseWriter, r *http.Request) {
+	t := template.Must(template.ParseFiles("feed.gohtml"))
+	t.Execute(w, mert)
+}
 
+func detailHandler(w http.ResponseWriter, r *http.Request) {
+	t := template.Must(template.ParseFiles("detail.gohtml"))
+	t.Execute(w, mert)
 }
 
 func main() {
-	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/", feedHandler)
 	http.HandleFunc("/agg/", newsAggHandler)
 	http.HandleFunc("/login/", loginHandler)
 	http.HandleFunc("/loginauth/", authHandler)
+	http.HandleFunc("/detail/", detailHandler)
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
+
 	http.ListenAndServe(":80", nil)
 }

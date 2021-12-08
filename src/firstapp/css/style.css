@@ -1,0 +1,79 @@
+body {
+    height: 100%;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-height: 100%;
+}
+img {
+    width: 100%;
+}
+.menu {
+    border-bottom: 1px solid gray;
+    padding-right: 5%;  
+    padding-left: 5%; 
+   
+}
+.menu h2, .menu form {
+    display: inline-block;
+    
+
+}
+.menu input {
+    margin-left: 30px;
+    height: 30px;
+    width: 400px;
+}
+.mainbody {
+    margin-left: 5%;
+    margin-right: 5%;   
+    width: 90%;
+}
+.bigentry{
+    width: 45%;
+    display: inline-block;
+    vertical-align:top;
+}
+.imagecomp {
+    display:inline;
+    float: left;
+    width: 29%;
+}
+.textcomp {
+    display:inline;
+    float: left;
+    width: 70%;
+    margin: 1px;
+}
+.textcomp h2, p {
+    padding: 0px 10px 0px 10px;
+}
+.textcomp h2 {
+    margin-top: 0px;
+}
+.imagecomp img {
+    width: 100%;
+}
+h1 {
+    margin-bottom: 4px;
+}
+hr {
+    margin-top: 4px;
+    margin-bottom: 20px;
+}
+.bigentry a {
+    color: inherit;
+}
+.bigentry a:hover h2{
+    text-decoration: underline;
+}
+
+.footer {
+    border-top: 1px solid gray;
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: 20px;
+    padding-top:20px
+}
+
